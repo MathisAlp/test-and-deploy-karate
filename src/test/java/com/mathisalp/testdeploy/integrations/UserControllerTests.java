@@ -40,4 +40,14 @@ public class UserControllerTests {
         .andExpect( status().isOk())
         .andExpect( jsonPath( "$.name").value("Saint"));
     }
+
+    @Test
+    public void getUserById() throws Exception {
+        mockMvc.perform(get("/users/{id}", 1))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(1))
+                .andExpect(jsonPath("$.name").isString())
+                .andExpect(jsonPath("$.adresse").isString())
+                .andExpect(jsonPath("$.password").isString());
+        }
 }

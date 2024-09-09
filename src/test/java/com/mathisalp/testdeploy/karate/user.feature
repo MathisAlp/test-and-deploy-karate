@@ -13,3 +13,9 @@ Feature: UserController Api Tests
     When method POST
     Then status 200
     And match response == { id: '#notnull', name: 'Elsy', adresse : 'dakar', password: '234567890'}
+
+  Scenario: Get User by ID
+    Given path '1'
+    When method GET
+    Then status 200
+    And match response == { id: 1, name: '#string', adresse: '#string', password: '#string' }
